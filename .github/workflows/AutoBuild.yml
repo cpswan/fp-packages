@@ -39,17 +39,17 @@ jobs:
         version:
           #- SNAPSHOT
           - 24.10.2
-          - 23.05.5
+          #- 23.05.5
         arch_packages:
           - x86_64
-          - aarch64_cortex-a53
-          - aarch64_generic
-          - arm_cortex-a15_neon-vfpv4
-          - arm_cortex-a9_vfpv3-d16
-          - arm_cortex-a7_neon-vfpv4
-          - mips_24kc
-          - mipsel_24kc
-          - riscv64_riscv64
+          #- aarch64_cortex-a53
+          #- aarch64_generic
+          #- arm_cortex-a15_neon-vfpv4
+          #- arm_cortex-a9_vfpv3-d16
+          #- arm_cortex-a7_neon-vfpv4
+          #- mips_24kc
+          #- mipsel_24kc
+          #- riscv64_riscv64
         include:
           - usign_id: ${{ vars.USIGN_ID }}
           - gpg_id: ${{ vars.GPG_ID }}
