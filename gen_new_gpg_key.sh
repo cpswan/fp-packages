@@ -19,7 +19,7 @@ out=$(gpg --full-gen-key --batch <(echo "Key-Type: 1"; \
 #
 #key_id="$(echo "$out"|sed -En 's|.+key ([[:xdigit:]]+) marked.+|\1|p')"
 rev_cert="$(echo "$out"|sed -En "s|.+revocation certificate stored as '([^']+)'.*|\1|p")"
-key_id="$(echo $rev_cert | sed -En "s|.*([0-9A-F]{40})\.rev|\1|p")"
+key_id="$(echo $rev_cert | sed -En "s|.*([0-9A-F]{16})\.rev|\1|p")"
 finger="$(gpg --fingerprint ${key_id}|sed -n '2{s|^\s*||p}')"
 #
 echo $out
