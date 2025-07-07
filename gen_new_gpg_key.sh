@@ -4,8 +4,8 @@ PW=$(echo $(cat /dev/urandom 2>/dev/null | head -n 8 | md5sum | cut -c 1-${PWSIZ
 FINGERPRINT=
 KEYSIZE=4096
 EXPIRE=0
-NAME="fantastic packages"
-MAIL="fantastic-packages@users.noreply.github.com"
+NAME="cpswan packages"
+MAIL="478926+cpswan@users.noreply.github.com"
 #
 out=$(gpg --full-gen-key --batch <(echo "Key-Type: 1"; \
                                    echo "Key-Length: ${KEYSIZE}"; \
@@ -17,10 +17,14 @@ out=$(gpg --full-gen-key --batch <(echo "Key-Type: 1"; \
                                    echo "Passphrase: ${PW}"; ) 2>&1)
 #                                  echo "%no-protection"; ) 2>&1)
 #
-key_id="$(echo "$out"|sed -En 's|.+key ([[:xdigit:]]+) marked.+|\1|p')"
+#key_id="$(echo "$out"|sed -En 's|.+key ([[:xdigit:]]+) marked.+|\1|p')"
 rev_cert="$(echo "$out"|sed -En "s|.+revocation certificate stored as '([^']+)'.*|\1|p")"
+key_id="$(echo $rev_cert | sed -En "s|.*([0-9A-F]{40})\.rev|\1|p")"
 finger="$(gpg --fingerprint ${key_id}|sed -n '2{s|^\s*||p}')"
 #
+echo $out
+echo $key_id
+echo $rev_cert
 if [ -n "$key_id" -a -n "$rev_cert" ]; then
     echo $PW > keys/gpg/${key_id^^}.pw
     echo $finger > keys/gpg/${key_id^^}.finger
