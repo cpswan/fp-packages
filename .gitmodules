@@ -1,0 +1,3 @@
+[submodule "packages/csshnpd"]
+	path = packages/csshnpd
+	url = https://github.com/atsign-foundation/Atsign_OpenWRT_packages.git
