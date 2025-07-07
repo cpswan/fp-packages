@@ -56,22 +56,22 @@ jobs:
           - arch_packages: x86_64
             target: ['x86', '64'] # for imagebuilder
             profile: generic # for imagebuilder
-          - arch_packages: aarch64_cortex-a53
-            target: ['mvebu', 'cortexa53']
-          - arch_packages: aarch64_generic
-            target: ['armsr', 'armv8']
-          - arch_packages: arm_cortex-a15_neon-vfpv4
-            target: ['armsr', 'armv7']
-          - arch_packages: arm_cortex-a9_vfpv3-d16
-            target: ['mvebu', 'cortexa9']
-          - arch_packages: arm_cortex-a7_neon-vfpv4
-            target: ['ipq40xx', 'generic']
-          - arch_packages: mips_24kc
-            target: ['ath79', 'generic']
-          - arch_packages: mipsel_24kc
-            target: ['ramips', 'mt7621']
-          - arch_packages: riscv64_riscv64
-            target: ['sifiveu', 'generic']
+          #- arch_packages: aarch64_cortex-a53
+          #  target: ['mvebu', 'cortexa53']
+          #- arch_packages: aarch64_generic
+          #  target: ['armsr', 'armv8']
+          #- arch_packages: arm_cortex-a15_neon-vfpv4
+          #  target: ['armsr', 'armv7']
+          #- arch_packages: arm_cortex-a9_vfpv3-d16
+          #  target: ['mvebu', 'cortexa9']
+          #- arch_packages: arm_cortex-a7_neon-vfpv4
+          #  target: ['ipq40xx', 'generic']
+          #- arch_packages: mips_24kc
+          #  target: ['ath79', 'generic']
+          #- arch_packages: mipsel_24kc
+          #  target: ['ramips', 'mt7621']
+          #- arch_packages: riscv64_riscv64
+          #  target: ['sifiveu', 'generic']
     uses: ./.github/workflows/compile.yml
     with:
       compiles: ${{ inputs.compile_packages }}
